@@ -1,0 +1,120 @@
+@use "vars" as *;
+
+// ── keyboard layout ─────────────────────────────────────────────────────────
+
+#keyboard {
+  display: grid;
+  grid-template-columns: repeat(11, minmax(0, 1fr));
+  column-gap: 2px;
+  row-gap: 6px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #e5e7eb;  // gray-200
+  padding: 12px 6px 16px;
+}
+
+// ── shared key base ─────────────────────────────────────────────────────────
+
+.key {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0 2px;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  height: 44px;
+  width: 100%;
+}
+
+// ── tone keys (grey, non-interactive display) ───────────────────────────────
+
+.key--tone {
+  background: #d1d5db; // gray-300
+  font-size: 14px;
+  font-weight: 700;
+  color: #6b7280;
+  cursor: default;
+  justify-content: center;
+}
+
+// ── consonant keys (sky / blue) ─────────────────────────────────────────────
+
+.key--consonant {
+  background: #f0f9ff;      // sky-50
+  color: #0369a1;            // sky-700
+  border: 1px solid rgba(#93c5fd, 0.5);
+  box-shadow: 0 2px 0 0 #bae6fd; // sky-200
+
+  &:active,
+  &.key--active {
+    background: #0ea5e9;    // sky-500
+    color: #fff;
+    box-shadow: none;
+    transform: translateY(2px);
+  }
+
+  &:hover:not(.key--active) {
+    background: #e0f2fe;    // sky-100
+  }
+}
+
+// ── vowel keys (orange) ─────────────────────────────────────────────────────
+
+.key--vowel {
+  background: #fff7ed;      // orange-50
+  color: #c2410c;            // orange-700
+  border: 1px solid rgba(#fdba74, 0.5);
+  box-shadow: 0 2px 0 0 #fed7aa; // orange-200
+
+  &:active,
+  &.key--active {
+    background: #f97316;    // orange-500
+    color: #fff;
+    box-shadow: none;
+    transform: translateY(2px);
+  }
+
+  &:hover:not(.key--active) {
+    background: #ffedd5;    // orange-100
+  }
+}
+
+// ── key content ──────────────────────────────────────────────────────────────
+
+.key-symbol {
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.key-label {
+  font-size: 9px;
+  line-height: 1;
+  color: #9ca3af; // gray-400
+
+  .key--active & { color: rgba(255,255,255,0.7); }
+}
+
+// ── spacebar row ─────────────────────────────────────────────────────────────
+
+.key--spacebar {
+  grid-column: 1 / -1;
+  height: 36px;
+  background: #d1d5db;    // gray-200
+  justify-content: center;
+  flex-direction: row;
+  gap: 4px;
+  cursor: default;
+  font-size: 12px;
+  font-weight: 700;
+  color: #6b7280;
+
+  .spacebar-sep {
+    font-size: 10px;
+    color: #9ca3af;
+  }
+}

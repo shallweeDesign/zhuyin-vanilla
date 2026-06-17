@@ -1,0 +1,271 @@
+@use "vars" as *;
+
+// ── filter nav ───────────────────────────────────────────────────────────────
+
+.filter-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px 16px;
+  background: rgba($bg, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.filter-btn {
+  padding: 8px 16px;
+  border-radius: $radius-full;
+  font-size: 14px;
+  font-weight: 700;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  color: #4b5563;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.1s, color 0.1s;
+
+  &:hover { background: #f9fafb; }
+
+  &--active {
+    background: $rose;
+    color: #fff;
+    border-color: $rose;
+    box-shadow: 0 2px 8px rgba($rose, 0.3);
+  }
+}
+
+// ── symbol grid ──────────────────────────────────────────────────────────────
+
+#symbol-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  max-width: 960px;
+  width: 100%;
+  padding: 24px 16px;
+  margin: 0 auto;
+
+  @media (min-width: 480px)  { grid-template-columns: repeat(3, 1fr); }
+  @media (min-width: 720px)  { grid-template-columns: repeat(4, 1fr); }
+  @media (min-width: 960px)  { grid-template-columns: repeat(5, 1fr); }
+}
+
+// ── group / category dividers ─────────────────────────────────────────────────
+
+.sym-group-divider {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 4px;
+
+  &::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #f3f4f6;
+  }
+}
+
+.sym-group-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #9ca3af;
+  white-space: nowrap;
+}
+
+.sym-cat-divider {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 8px 0;
+}
+
+.sym-cat-line {
+  flex: 1;
+  height: 2px;
+  border-radius: 2px;
+
+  .sym-cat-divider--consonant & { background: #bae6fd; }
+  .sym-cat-divider--vowel &    { background: #fed7aa; }
+}
+
+.sym-cat-badge {
+  padding: 2px 12px;
+  border-radius: $radius-full;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+
+  .sym-cat-divider--consonant & { background: #e0f2fe; color: #0369a1; }
+  .sym-cat-divider--vowel &    { background: #ffedd5; color: #c2410c; }
+}
+
+// ── symbol card ───────────────────────────────────────────────────────────────
+
+.sym-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  border-radius: 24px;
+  border-width: 4px;
+  border-style: solid;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  transition: box-shadow 0.15s;
+
+  &:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+
+  &--consonant { background: #f0f9ff; border-color: #bae6fd; }
+  &--vowel     { background: #fff7ed; border-color: #fed7aa; }
+  &--combined  { background: #fdf4ff; border-color: #e9d5ff; }
+}
+
+.sym-chip {
+  padding: 2px 12px;
+  border-radius: $radius-full;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+
+  .sym-card--consonant & { background: #0ea5e9; }
+  .sym-card--vowel &     { background: $orange; }
+  .sym-card--combined &  { background: #a855f7; }
+}
+
+.sym-glyph {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1;
+  background: none;
+  border: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.1s;
+
+  &:active { transform: scale(0.9); }
+
+  .sym-card--consonant & { color: #0369a1; }
+  .sym-card--vowel &     { color: #c2410c; }
+  .sym-card--combined &  { color: #7e22ce; }
+}
+
+.sym-pinyin {
+  font-family: monospace;
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+.sym-toggle {
+  padding: 4px 12px;
+  border-radius: $radius-full;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  font-size: 11px;
+  font-weight: 500;
+  color: #4b5563;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.1s;
+
+  &:hover { background: #f9fafb; }
+}
+
+// ── mouth shape section ───────────────────────────────────────────────────────
+
+.sym-mouth {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+
+  svg { width: 112px; height: 112px; }
+}
+
+.sym-mouth-note {
+  font-size: 11px;
+  line-height: 1.5;
+  color: #6b7280;
+  text-align: center;
+}
+
+// ── stroke section ────────────────────────────────────────────────────────────
+
+.sym-stroke-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  background: #f9fafb;
+  box-shadow: 0 0 0 2px #e5e7eb;
+  cursor: pointer;
+}
+
+.sym-ghost {
+  position: absolute;
+  inset: 0;
+
+  img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0.07;
+    pointer-events: none;
+  }
+}
+
+.sym-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.sym-stroke-counter {
+  position: absolute;
+  bottom: 4px;
+  right: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #9ca3af;
+}
+
+// ── example word button ───────────────────────────────────────────────────────
+
+.sym-word-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: $radius-lg;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  font-size: 13px;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.1s;
+
+  &:hover { background: #f9fafb; }
+}
+
+.sym-word-zy { font-family: monospace; color: #6b7280; }
+.sym-word-char { font-weight: 600; color: #1f2937; }
+
+// ── utility ───────────────────────────────────────────────────────────────────
+
+.hidden { display: none !important; }

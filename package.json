@@ -1,0 +1,12 @@
+{
+  "name": "zhuyin-vanilla",
+  "private": true,
+  "scripts": {
+    "sass": "sass scss/main.scss css/main.css --watch --style=expanded --source-map",
+    "build": "sass scss/main.scss css/main.css --style=compressed --no-source-map",
+    "serve": "node server.js"
+  },
+  "devDependencies": {
+    "sass": "^1.77.0"
+  }
+}

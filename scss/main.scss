@@ -1,0 +1,129 @@
+@use "vars" as *;
+@use "keyboard";
+@use "display";
+@use "symbols";
+
+// ── reset / base ───────────────────────────────────────────────────────────────
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  font-family: $font-sans;
+  background: $bg;
+  color: $fg;
+  -webkit-text-size-adjust: 100%;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
+  overscroll-behavior: none;
+}
+
+img { display: block; max-width: 100%; }
+
+button {
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  font-family: inherit;
+}
+
+// ── page shell (index.html) ────────────────────────────────────────────────────
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+// ── header bar ────────────────────────────────────────────────────────────────
+
+.app-header {
+  display: flex;
+  flex: none;
+  height: 44px;
+  align-items: center;
+  justify-content: space-between;
+  background: $rose;
+  padding: 0 16px;
+  color: #fff;
+}
+
+.app-header__title {
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+}
+
+.app-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: $radius-full;
+  background: rgba(255,255,255,0.2);
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover { background: rgba(255,255,255,0.3); }
+}
+
+// ── keyboard scroll area ───────────────────────────────────────────────────────
+
+.keyboard-scroll {
+  flex: none;
+  overflow: hidden;
+  background: #f9fafb;
+}
+
+// ── symbols page shell ─────────────────────────────────────────────────────────
+
+.symbols-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.symbols-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 40px 16px 24px;
+  text-align: center;
+}
+
+.symbols-back {
+  align-self: flex-start;
+  padding: 6px 16px;
+  border-radius: $radius-full;
+  background: #f3f4f6;
+  font-size: 13px;
+  font-weight: 700;
+  color: #4b5563;
+  text-decoration: none;
+
+  &:hover { background: #e5e7eb; }
+}
+
+.symbols-title {
+  font-size: 40px;
+  font-weight: 900;
+  color: $rose;
+}
+
+.symbols-footer {
+  padding: 24px 16px 40px;
+  text-align: center;
+  font-size: 12px;
+  color: #9ca3af;
+}

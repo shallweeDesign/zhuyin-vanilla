@@ -1,0 +1,173 @@
+@use "vars" as *;
+
+// ── display panel ────────────────────────────────────────────────────────────
+
+.display-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px;
+  background: #fff;
+  border-bottom: 2px solid #f3f4f6;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  flex: 1 1 0;
+  min-height: 0;
+  overflow: hidden;
+  container-type: size;
+}
+
+.display-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 260px;
+}
+
+// ── stroke canvas area ───────────────────────────────────────────────────────
+
+#stroke-btn {
+  position: relative;
+  width: min(100%, calc(100cqw - 32px), calc(100cqh - 160px));
+  aspect-ratio: 1;
+  border-radius: $radius-xl;
+  overflow: hidden;
+  background: #f9fafb;
+  border: none;
+  box-shadow: 0 0 0 2px #e5e7eb;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  display: block;
+
+  &:hover { box-shadow: 0 0 0 2px #c4b5fd; }
+  &:active { transform: scale(0.97); }
+}
+
+#ghost-strokes {
+  position: absolute;
+  inset: 0;
+
+  img.ghost-stroke {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0.07;
+    pointer-events: none;
+  }
+}
+
+#stroke-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#stroke-counter {
+  position: absolute;
+  bottom: 4px;
+  right: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #9ca3af;
+}
+
+.stroke-replay-hint {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  font-size: 10px;
+  color: #d1d5db;
+}
+
+// ── example word row ─────────────────────────────────────────────────────────
+
+#word-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  border-radius: $radius-xl;
+  padding: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+
+  &:active { transform: scale(0.97); }
+}
+
+#example-emoji-wrap {
+  display: flex;
+  flex: 1;
+  height: min(80px, calc(100cqh * 0.22));
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-xl;
+  background: linear-gradient(135deg, #fffbeb, #fed7aa);
+  box-shadow: 0 0 0 2px #fdba74;
+}
+
+#example-emoji {
+  font-size: min(36px, calc(100cqh * 0.10));
+  line-height: 1;
+}
+
+// ── MOE Zhuyin annotation ─────────────────────────────────────────────────────
+// 國字：韻符欄 ≈ 2:1；聲調符號置於韻符右上角
+
+#example-word {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.char-col {
+  display: flex;
+  align-items: flex-start;
+}
+
+.char-glyph {
+  font-size: min(30px, calc(100cqh * 0.09));
+  font-weight: 900;
+  line-height: 1;
+  color: #1f2937;
+}
+
+.zhuyin-col {
+  display: flex;
+  flex-direction: column;
+  width: 16px;
+  margin-left: 2px;
+}
+
+.zy-sym {
+  display: block;
+  text-align: center;
+  font-size: min(13px, calc(100cqh * 0.038));
+  font-weight: 700;
+  line-height: 1.2;
+  color: #fb7185;  // rose-400
+}
+
+.zy-last {
+  position: relative;
+}
+
+.zy-tone {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: min(8px, calc(100cqh * 0.023));
+  font-weight: 700;
+  line-height: 1;
+  color: #fb7185;
+}
