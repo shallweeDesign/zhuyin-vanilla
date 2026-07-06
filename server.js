@@ -70,7 +70,7 @@ const server = http.createServer((req, res) => {
 
 server.listen(PORT, "0.0.0.0", () => {
   const ip = localIP();
-  console.log(`\n注音小天使 開發伺服器\n`);
+  console.log(`\nㄅㄆㄇ大冒險 開發伺服器\n`);
   console.log(`  本機: http://localhost:${PORT}`);
   console.log(`  iPad: http://${ip}:${PORT}\n`);
 });
