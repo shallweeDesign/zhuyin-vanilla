@@ -1,0 +1,96 @@
+@use "vars" as *;
+
+.mictest {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.mictest-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px 16px;
+  border-radius: $radius-xl;
+  background: #fff;
+  border: 3px solid $sky;
+
+  h2 {
+    font-size: 17px;
+    font-weight: 900;
+    color: $fg;
+  }
+}
+
+.mictest-hint {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #6b7280;
+}
+
+.mictest-status {
+  min-height: 1.2em;
+  font-size: 13px;
+  font-weight: 700;
+  color: $orange;
+}
+
+.mictest-checks {
+  list-style: none;
+
+  .check {
+    padding: 4px 0;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .check--ok   { color: #15803d; }
+  .check--fail { color: $rose-dark; }
+}
+
+// volume meter
+.meter-track {
+  height: 22px;
+  border-radius: $radius-full;
+  background: #f3f4f6;
+  overflow: hidden;
+}
+
+.meter-bar {
+  width: 0%;
+  height: 100%;
+  border-radius: $radius-full;
+  background: linear-gradient(90deg, #4ade80, #22c55e);
+  transition: width 0.05s linear;
+}
+
+// recognition log
+.rec-log {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rec-entry {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: $radius-md;
+  background: #f9fafb;
+  font-size: 14px;
+
+  &__heard { font-weight: 700; color: $fg; }
+  &__matched {
+    color: #6b7280;
+    b { color: $sky; font-size: 16px; }
+  }
+}

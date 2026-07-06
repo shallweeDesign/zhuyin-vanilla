@@ -62,6 +62,14 @@
   text-align: center;
 }
 
+.level-select__miclink {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: $sky;
+}
+
 .level-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
