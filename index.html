@@ -17,6 +17,7 @@
     <header class="app-header">
       <span class="app-header__title">注音小天使</span>
       <nav class="app-header__nav">
+        <a href="game.html" class="nav-link">🎤 遊戲</a>
         <a href="symbols.html" class="nav-link">符號表</a>
       </nav>
     </header>
@@ -27,8 +28,10 @@
 
         <!-- Stroke animation -->
         <button id="stroke-btn" aria-label="點擊重播筆順">
-          <div id="ghost-strokes"></div>
-          <canvas id="stroke-canvas" width="512" height="512"></canvas>
+          <div id="stroke-zoom">
+            <div id="ghost-strokes"></div>
+            <svg id="stroke-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+          </div>
           <span id="stroke-counter"></span>
           <span class="stroke-replay-hint" aria-hidden="true">↺</span>
         </button>

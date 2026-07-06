@@ -46,6 +46,13 @@
   &:active { transform: scale(0.97); }
 }
 
+#stroke-zoom {
+  position: absolute;
+  inset: 0;
+  transform-origin: center center;
+  will-change: transform;
+}
+
 #ghost-strokes {
   position: absolute;
   inset: 0;
@@ -61,12 +68,14 @@
   }
 }
 
-#stroke-canvas {
+#stroke-svg {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
+  display: block;
+  overflow: visible;
 }
 
 #stroke-counter {
@@ -136,37 +145,40 @@
 }
 
 .char-glyph {
-  font-size: min(30px, calc(100cqh * 0.09));
+  font-size: min(30px, calc(100cqh * 0.09));  // 30px nominal, shrinks on very small screens
   font-weight: 900;
   line-height: 1;
   color: #1f2937;
 }
 
+// Column height matches char-glyph (30px). Symbols & tone are absolutely
+// positioned via inline top% set by zhuyinColHTML() in main.js.
 .zhuyin-col {
-  display: flex;
-  flex-direction: column;
-  width: 16px;
-  margin-left: 2px;
+  position: relative;
+  height: min(30px, calc(100cqh * 0.09));
+  width: 9px;
+  margin-left: 1px;
+  flex-shrink: 0;
 }
 
 .zy-sym {
-  display: block;
+  position: absolute;
+  left: 0;
+  width: 9px;
   text-align: center;
-  font-size: min(13px, calc(100cqh * 0.038));
+  font-size: min(9px, calc(100cqh * 0.027));
   font-weight: 700;
-  line-height: 1.2;
-  color: #fb7185;  // rose-400
+  line-height: 1;
+  color: #fb7185;
 }
 
-.zy-last {
-  position: relative;
-}
-
+// Positioned to the right of the 9px symbol column (left: 100%)
 .zy-tone {
   position: absolute;
-  top: 0;
-  right: 0;
-  font-size: min(8px, calc(100cqh * 0.023));
+  left: 100%;
+  width: 5px;
+  text-align: center;
+  font-size: min(6px, calc(100cqh * 0.018));
   font-weight: 700;
   line-height: 1;
   color: #fb7185;
