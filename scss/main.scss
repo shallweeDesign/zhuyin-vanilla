@@ -4,6 +4,7 @@
 @use "symbols";
 @use "game";
 @use "mictest";
+@use "decor";
 
 // ── reset / base ───────────────────────────────────────────────────────────────
 
@@ -47,7 +48,7 @@ button {
   height: 44px;
   align-items: center;
   justify-content: space-between;
-  background: $rose;
+  background: linear-gradient(90deg, $rose, $orange);
   padding: 0 16px;
   color: #fff;
 }
@@ -96,6 +97,7 @@ button {
 }
 
 .symbols-header {
+  position: relative; // anchors floating .decor illustrations
   display: flex;
   flex-direction: column;
   align-items: center;

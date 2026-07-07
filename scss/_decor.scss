@@ -1,0 +1,96 @@
+@use "vars" as *;
+
+// ── floating emoji decorations (all pages) ─────────────────────────────────────
+
+.decor {
+  position: absolute;
+  z-index: 0;
+  font-size: 32px;
+  opacity: 0.85;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  animation: decor-float 5s ease-in-out infinite;
+}
+
+.decor--sm { font-size: 22px; }
+.decor--lg { font-size: 44px; }
+
+@keyframes decor-float {
+  0%, 100% { transform: translateY(0) rotate(-6deg); }
+  50%      { transform: translateY(-12px) rotate(6deg); }
+}
+
+// ── game sky scene ─────────────────────────────────────────────────────────────
+
+.sky-decor {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.sky-sun {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  font-size: 52px;
+  animation: sun-bounce 4s ease-in-out infinite;
+}
+
+@keyframes sun-bounce {
+  0%, 100% { transform: scale(1) rotate(-8deg); }
+  50%      { transform: scale(1.12) rotate(8deg); }
+}
+
+.sky-cloud {
+  position: absolute;
+  left: 0;
+  font-size: 40px;
+  opacity: 0.9;
+  animation: cloud-drift linear infinite;
+}
+
+@keyframes cloud-drift {
+  from { transform: translateX(-90px); }
+  to   { transform: translateX(calc(100vw + 90px)); }
+}
+
+// grassy hill along the bottom of the playfield
+.ground {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  bottom: -34px;
+  height: 70px;
+  border-radius: 50% 50% 0 0;
+  background: linear-gradient(180deg, #86efac, #4ade80);
+  pointer-events: none;
+}
+
+.ground-flowers {
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  font-size: 20px;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+// ── playful buttons everywhere ─────────────────────────────────────────────────
+
+.nav-link,
+.game-start-btn,
+.game-secondary-btn,
+.level-btn,
+.symbols-back {
+  transition: transform 0.15s ease;
+
+  &:active { transform: scale(0.9); }
+}

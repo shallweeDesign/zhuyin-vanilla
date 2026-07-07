@@ -3,6 +3,7 @@
 // ── display panel ────────────────────────────────────────────────────────────
 
 .display-panel {
+  position: relative; // anchors floating .decor illustrations
   display: flex;
   flex-direction: column;
   align-items: center;

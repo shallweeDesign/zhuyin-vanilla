@@ -23,6 +23,9 @@
   background: #fff;
   border: 3px solid $sky;
 
+  &:nth-of-type(2) { border-color: $orange; }
+  &:nth-of-type(3) { border-color: #22c55e; }
+
   h2 {
     font-size: 17px;
     font-weight: 900;
@@ -69,6 +72,14 @@
   border-radius: $radius-full;
   background: linear-gradient(90deg, #4ade80, #22c55e);
   transition: width 0.05s linear;
+}
+
+// recognition voiceprint
+.rec-wave {
+  width: 100%;
+  height: 72px;
+  border-radius: $radius-md;
+  background: #f9fafb;
 }
 
 // recognition log
