@@ -25,9 +25,11 @@
   perspective: 800px;
   touch-action: none; // this element owns pointer gestures — no scroll/zoom fighting
   -webkit-tap-highlight-color: transparent;
+  transition: transform 0.35s cubic-bezier(0.34, 1.2, 0.4, 1); // settle into/out of the zone
 
   &--dragging {
     z-index: 20;
+    transition: none; // 1:1 pointer tracking while actively held
     filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.25));
   }
 }
@@ -70,7 +72,38 @@
   to { scale: 0.4; opacity: 0; }
 }
 
-// ── tray (配對區) ─────────────────────────────────────────────────────────────
+// ── matching zone (配對區) — drop target for the active pair attempt ────────────
+
+.match-zone {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 16px 10px;
+}
+
+.match-zone__label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #9ca3af;
+}
+
+.match-zone__slots {
+  display: flex;
+  gap: 14px;
+}
+
+.match-zone__slot {
+  width: 56px;
+  height: 74px;
+  border: 3px dashed #cbd5e1;
+  border-radius: $radius-lg;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+// ── collected tray (已配對) ──────────────────────────────────────────────────
 
 .match-tray {
   position: relative;
