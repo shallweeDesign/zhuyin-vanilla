@@ -36,6 +36,18 @@
   &--bounce {
     transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1); // springy overshoot
   }
+
+  &--pulse {
+    animation: match-card-pulse 0.4s ease-out;
+
+    .match-card__face { outline: 3px solid #fbbf24; outline-offset: 2px; }
+  }
+}
+
+@keyframes match-card-pulse {
+  0%   { scale: 1; }
+  35%  { scale: 1.15; }
+  100% { scale: 1; }
 }
 
 .match-card__face {
@@ -100,11 +112,14 @@
 }
 
 .match-zone__slot {
-  width: 56px;
-  height: 74px;
+  // JS sets the real width/height to match this level's card size right
+  // after layout; this is only the flash-of-wrong-size fallback before that
+  width: 96px;
+  height: 128px;
   border: 3px dashed #cbd5e1;
   border-radius: $radius-lg;
   background: rgba(255, 255, 255, 0.5);
+  transition: width 0.2s, height 0.2s;
 }
 
 // ── collected tray (已配對) ──────────────────────────────────────────────────
