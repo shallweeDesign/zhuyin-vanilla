@@ -1,13 +1,19 @@
 @use "vars" as *;
 
+// One fixed card size for the whole game — the zone slots reuse the same
+// width + aspect-ratio so a card sitting in a slot lines up with its dashed
+// outline exactly, and cards stay the same size no matter how many pairs a
+// level has (auto-fill just adds/removes columns, never resizes them).
+$match-card-w: 88px;
+
 // ── board ──────────────────────────────────────────────────────────────────────
 
 .match-board {
-  --cols: 4;
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: repeat(var(--cols), 1fr);
+  grid-template-columns: repeat(auto-fill, #{$match-card-w});
+  justify-content: center;
   gap: 10px;
   max-width: 480px;
   margin: 0 auto;
@@ -18,6 +24,7 @@
 
 .match-card {
   position: relative;
+  width: $match-card-w;
   aspect-ratio: 3 / 4;
   border: none;
   background: none;
@@ -112,14 +119,13 @@
 }
 
 .match-zone__slot {
-  // JS sets the real width/height to match this level's card size right
-  // after layout; this is only the flash-of-wrong-size fallback before that
-  width: 96px;
-  height: 128px;
+  // same formula as .match-card (fixed width + aspect-ratio) so a card
+  // dropped here lines up exactly with the dashed outline
+  width: $match-card-w;
+  aspect-ratio: 3 / 4;
   border: 3px dashed #cbd5e1;
   border-radius: $radius-lg;
   background: rgba(255, 255, 255, 0.5);
-  transition: width 0.2s, height 0.2s;
 }
 
 // ── collected tray (已配對) ──────────────────────────────────────────────────
