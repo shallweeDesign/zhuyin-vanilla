@@ -6,6 +6,8 @@
 @use "match";
 @use "mictest";
 @use "decor";
+@use "mascot";
+@use "story";
 
 // ── reset / base ───────────────────────────────────────────────────────────────
 
@@ -63,8 +65,13 @@ button {
 .app-header__nav {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
 }
+
+.nav-link { flex: none; } // never shrink/wrap inside the scrollable nav
 
 .nav-link {
   display: inline-block;

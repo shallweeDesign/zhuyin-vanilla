@@ -1,0 +1,119 @@
+@use "vars" as *;
+
+// ── story.html (intro) ───────────────────────────────────────────────────────
+
+.story-shell {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: linear-gradient(180deg, #dbeafe 0%, $bg 70%);
+  overflow: hidden;
+}
+
+.story-back {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: rgba(255, 255, 255, 0.6);
+  color: $fg;
+}
+
+.story-card {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  max-width: 380px;
+  padding: 32px 26px 28px;
+  border-radius: $radius-xl;
+  background: #fff;
+  text-align: center;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+}
+
+.story-card__hero {
+  font-size: 64px;
+  animation: mascot-idle 2.6s ease-in-out infinite;
+}
+
+.story-card__title {
+  font-size: 22px;
+  font-weight: 900;
+  color: $rose;
+}
+
+.story-card__body {
+  p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #4b5563;
+    margin-top: 8px;
+  }
+}
+
+.story-card__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 12px;
+  width: 100%;
+
+  .game-start-btn, .game-secondary-btn {
+    text-decoration: none;
+  }
+}
+
+// ── friends.html (scrapbook) ─────────────────────────────────────────────────
+
+.friends-shell {
+  min-height: 100dvh;
+  background: $bg;
+}
+
+.friends-hint {
+  padding: 14px 16px 4px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #6b7280;
+}
+
+.friends-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 12px 16px 32px;
+
+  @media (max-width: 420px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.friend-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 4px;
+  border-radius: $radius-lg;
+  background: #f3f4f6;
+  border: 3px solid #e5e7eb;
+
+  &__emoji { font-size: 30px; opacity: 0.5; }
+  &__name  { font-size: 11px; font-weight: 700; color: #9ca3af; }
+
+  &--got {
+    background: #fff;
+    border-color: #22c55e;
+
+    .friend-card__emoji { opacity: 1; }
+    .friend-card__name  { color: $fg; }
+  }
+}
