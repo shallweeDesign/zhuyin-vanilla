@@ -45,19 +45,6 @@
   50%      { transform: scale(1.12) rotate(8deg); }
 }
 
-.sky-cloud {
-  position: absolute;
-  left: 0;
-  font-size: 40px;
-  opacity: 0.4;
-  animation: cloud-drift linear infinite;
-}
-
-@keyframes cloud-drift {
-  from { transform: translateX(-90px); }
-  to   { transform: translateX(calc(100vw + 90px)); }
-}
-
 // grassy hill along the bottom of the playfield
 .ground {
   position: absolute;
