@@ -1,3 +1,4 @@
+@use "sass:list";
 @use "vars" as *;
 
 // One fixed card size for the whole game — the zone slots reuse the same
@@ -80,6 +81,21 @@ $match-card-w: 88px;
     background: #fff;
     border: 3px solid $orange;
     transform: rotateY(180deg);
+  }
+}
+
+// each card cycles through a rainbow palette (by board position, not by
+// symbol — purely decorative, not a pairing hint) instead of uniform blue
+$match-palette: #0ea5e9 #38bdf8, #f43f5e #fb7185, #f97316 #fb923c, #22c55e #4ade80, #a855f7 #c084fc;
+
+@for $i from 1 through list.length($match-palette) {
+  $pair: list.nth($match-palette, $i);
+  .match-card:nth-child(#{list.length($match-palette)}n + #{$i}) {
+    .match-card__face--back {
+      background: linear-gradient(160deg, list.nth($pair, 1), list.nth($pair, 2));
+      box-shadow: 0 4px 10px rgba(list.nth($pair, 1), 0.35);
+    }
+    .match-card__face--front { border-color: list.nth($pair, 1); }
   }
 }
 
